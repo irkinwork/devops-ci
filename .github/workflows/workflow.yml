@@ -1,0 +1,22 @@
+name: Nodos CI
+
+on:
+  - push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: npm install, build
+        run: npm i
+      - name: Run linter
+        run: make lint
+      - name: Run tests
+        run: make test
